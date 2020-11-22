@@ -10,7 +10,7 @@ import SwiftUI
 struct PresentView: View {
     var day: Int // 1..24
 
-    @State private var toggleStatus = false
+    @State private var toggleStatus = true
     
     var body: some View {
         ZStack {
