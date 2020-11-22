@@ -9,7 +9,25 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        CountdownView()
+        TabView {
+            CountdownView()
+                .tabItem {
+                    Image(systemName: "timer.square")
+                    Text("Countdown")
+                }
+
+            AdventCalendarView()
+                .tabItem {
+                    Image(systemName: "calendar")
+                    Text("Calendar")
+                }
+
+            SettingsView()
+                .tabItem {
+                    Image(systemName: "gearshape.2")
+                    Text("Settings")
+                }
+        }
     }
 }
 

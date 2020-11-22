@@ -19,49 +19,52 @@ struct CountdownView: View {
 //        "Noteworthy",
 //        "Papyrus",
         "Party LET",
-        size: 70)
+        size: 60) // 70
+
+    let circleRadius: CGFloat = 200.0 // 250
+    let circleFontSize: CGFloat = 170 // 200
     
-    @State private var hidden = false
-    @State private var hasOffset = false
-    @State private var isRedBackground: Bool = false
+//    @State private var hidden = false
+//    @State private var hasOffset = false
+    @State private var isRedBackground: Bool = true
     @State private var toggleStatus = false
 
     var body: some View {
         VStack {
-            Button("Tap Me") {
-                self.hidden = true
-            }
-            .opacity(hidden ? 0 : 1)
-            .animation(.easeInOut(duration: 2))
-
-            Button("Tap Me") {
-                       withAnimation(.interpolatingSpring(
-                           mass: 1,
-                           stiffness: 80,
-                           damping: 4,
-                           initialVelocity: 0)) {
-                               self.hasOffset.toggle()
-                           }
-                   }
-                   .offset(y: hasOffset ? 40 : 0)
-
-            Toggle(isOn: $isRedBackground) {
-                Text("Red?")
-            }
-            .padding()
+//            Button("Tap Me") {
+//                self.hidden = true
+//            }
+//            .opacity(hidden ? 0 : 1)
+//            .animation(.easeInOut(duration: 2))
+//
+//            Button("Tap Me") {
+//                       withAnimation(.interpolatingSpring(
+//                           mass: 1,
+//                           stiffness: 80,
+//                           damping: 4,
+//                           initialVelocity: 0)) {
+//                               self.hasOffset.toggle()
+//                           }
+//                   }
+//                   .offset(y: hasOffset ? 40 : 0)
+//
+//            Toggle(isOn: $isRedBackground) {
+//                Text("Red?")
+//            }
+//            .padding()
 
             Text("It's")
                 .font(textFont)
 
             ZStack {
                 Text("\(daysLeft)")
-                    .font(.custom("Academy Engraved LET", size: 200))
+                    .font(.custom("Academy Engraved LET", size: circleFontSize))
                     .baselineOffset(-45)
-                    .frame(width: 250, height: 250)
+                    .frame(width: circleRadius, height: circleRadius)
                     .foregroundColor(isRedBackground ? Color.white : Color.red)
                     .background(Circle()
                                     .fill(isRedBackground ? Color.red : Color.white)
-                                    .frame(width: 250, height: 250)
+                                    .frame(width: circleRadius, height: circleRadius)
                     )
                     .opacity(toggleStatus ? 0.0 : 1.0)
                     .onTapGesture {
@@ -72,11 +75,11 @@ struct CountdownView: View {
                 Text("Surprise")
 //                    .font(.custom("Academy Engraved LET", size: 200))
 //                    .baselineOffset(-45)
-                    .frame(width: 250, height: 250)
+                    .frame(width: circleRadius, height: circleRadius)
                     .foregroundColor(isRedBackground ? Color.red : Color.white)
                     .background(Rectangle()
                                     .fill(isRedBackground ? Color.white : Color.red)
-                                    .frame(width: 250, height: 250)
+                                    .frame(width: circleRadius, height: circleRadius)
                     )
                     .opacity(!toggleStatus ? 0.0 : 1.0)
                     .onTapGesture {
@@ -87,11 +90,11 @@ struct CountdownView: View {
 
             Text("DAYS")
                 .font(textFont)
-                .baselineOffset(-24)
+//                .baselineOffset(-24)
             Text("before Christmas")
                 .font(textFont)
         }
-        
+        .padding(.vertical)
     }
 }
 
