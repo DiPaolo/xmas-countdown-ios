@@ -11,7 +11,7 @@
 		4B59E83D2568BD1A00F5C2D6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B59E83C2568BD1A00F5C2D6 /* ContentView.swift */; };
 		4B59E83F2568BD1E00F5C2D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B59E83E2568BD1E00F5C2D6 /* Assets.xcassets */; };
 		4B59E8422568BD1E00F5C2D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B59E8412568BD1E00F5C2D6 /* Preview Assets.xcassets */; };
-		4B59E84B2568BDB400F5C2D6 /* CircleBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B59E84A2568BDB400F5C2D6 /* CircleBox.swift */; };
+		4B59FFCE256A19E700C0B9D7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B59FFCD256A19E700C0B9D7 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,7 +21,7 @@
 		4B59E83E2568BD1E00F5C2D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B59E8412568BD1E00F5C2D6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4B59E8432568BD1F00F5C2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4B59E84A2568BDB400F5C2D6 /* CircleBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleBox.swift; sourceTree = "<group>"; };
+		4B59FFCD256A19E700C0B9D7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +56,7 @@
 			children = (
 				4B59E83A2568BD1A00F5C2D6 /* XMas_CountdownApp.swift */,
 				4B59E83C2568BD1A00F5C2D6 /* ContentView.swift */,
-				4B59E84A2568BDB400F5C2D6 /* CircleBox.swift */,
+				4B59FFCD256A19E700C0B9D7 /* SettingsView.swift */,
 				4B59E83E2568BD1E00F5C2D6 /* Assets.xcassets */,
 				4B59E8432568BD1F00F5C2D6 /* Info.plist */,
 				4B59E8402568BD1E00F5C2D6 /* Preview Content */,
@@ -141,7 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B59E84B2568BDB400F5C2D6 /* CircleBox.swift in Sources */,
+				4B59FFCE256A19E700C0B9D7 /* SettingsView.swift in Sources */,
 				4B59E83D2568BD1A00F5C2D6 /* ContentView.swift in Sources */,
 				4B59E83B2568BD1A00F5C2D6 /* XMas_CountdownApp.swift in Sources */,
 			);
