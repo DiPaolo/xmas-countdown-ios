@@ -32,28 +32,31 @@ struct GridStack<Content: View>: View {
 }
 
 struct AdventCalendarView: View {
-    var dates = [Int]()
+    private let rows = 6
+    private let columns = 4
     
-    let rows = 6
-    let columns = 4
+    private var dates = [Int]()
+    private var imageIndexes = initShuffledArray(size: 24)
     
     var body: some View {
         GridStack(rows: self.rows, columns: self.columns) { row, col in
-            PresentView(day: dates[row * self.columns + col])
+            let day = dates[row * self.columns + col]
+            GiftView(day: day, giftImage: getImage(pack: "The Star Wars", index: imageIndexes[day - 1]), isOpened: false)
         }
     }
     
     init() {
+        initDates()
+        initImageIndexes()
+    }
+    
+    private mutating func initDates() {
+        print("Initializing dates...")
+        
         if UserDefaults.standard.object(forKey: "DateList") == nil {
             // initialize the days from 1 to 24 in random order
             
-            var days = Array(repeating: 0, count: 24)
-            for i in 0..<24 {
-                days[i] = i + 1
-            }
-
-            days.shuffle()
-            
+            let days = initShuffledArray(size: 24)
             print("Initialized 'DateList' with the values:")
             print(days)
             
@@ -61,9 +64,37 @@ struct AdventCalendarView: View {
         }
         
         dates = UserDefaults.standard.array(forKey: "DateList") as? [Int] ?? [Int]()
-        print("Initializing dates...")
         print(dates)
+        print()
     }
+    
+    private mutating func initImageIndexes() {
+        print("Initializing image indexes...")
+        
+        if UserDefaults.standard.object(forKey: "ImageIndexList") == nil {
+            // initialize image indexes from 1 to 24 in random order
+            
+            let imageIndexes = initShuffledArray(size: 24)
+            print("Initialized 'ImageIndexList' with the values:")
+            print(imageIndexes)
+            
+            UserDefaults.standard.set(imageIndexes, forKey: "ImageIndexList")
+        }
+        
+        imageIndexes = UserDefaults.standard.array(forKey: "ImageIndexList") as? [Int] ?? [Int]()
+        print(imageIndexes)
+        print()
+    }
+}
+
+fileprivate func initShuffledArray(size: Int) -> Array<Int> {
+    var array = Array(repeating: 0, count: size)
+    for i in 0..<size {
+        array[i] = i + 1
+    }
+    
+    array.shuffle()
+    return array
 }
 
 struct AdventCalendarView_Previews: PreviewProvider {

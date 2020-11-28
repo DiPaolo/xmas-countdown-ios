@@ -14,7 +14,8 @@
 		4B59FFCE256A19E700C0B9D7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B59FFCD256A19E700C0B9D7 /* SettingsView.swift */; };
 		4B59FFD1256A1B8300C0B9D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B59FFD0256A1B8300C0B9D7 /* ContentView.swift */; };
 		4B59FFD9256A28E000C0B9D7 /* AdventCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B59FFD8256A28E000C0B9D7 /* AdventCalendarView.swift */; };
-		4B59FFDC256A83A000C0B9D7 /* PresentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B59FFDB256A83A000C0B9D7 /* PresentView.swift */; };
+		4B59FFDC256A83A000C0B9D7 /* GiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B59FFDB256A83A000C0B9D7 /* GiftView.swift */; };
+		4B930B912571F48400215DF6 /* ImagePack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B930B902571F48400215DF6 /* ImagePack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +28,8 @@
 		4B59FFCD256A19E700C0B9D7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		4B59FFD0256A1B8300C0B9D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4B59FFD8256A28E000C0B9D7 /* AdventCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventCalendarView.swift; sourceTree = "<group>"; };
-		4B59FFDB256A83A000C0B9D7 /* PresentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentView.swift; sourceTree = "<group>"; };
+		4B59FFDB256A83A000C0B9D7 /* GiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftView.swift; sourceTree = "<group>"; };
+		4B930B902571F48400215DF6 /* ImagePack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +46,6 @@
 		4B59E82E2568BD1A00F5C2D6 = {
 			isa = PBXGroup;
 			children = (
-				4B59FFDB256A83A000C0B9D7 /* PresentView.swift */,
 				4B59E8392568BD1A00F5C2D6 /* XMas Countdown */,
 				4B59E8382568BD1A00F5C2D6 /* Products */,
 			);
@@ -61,6 +62,8 @@
 		4B59E8392568BD1A00F5C2D6 /* XMas Countdown */ = {
 			isa = PBXGroup;
 			children = (
+				4B930B902571F48400215DF6 /* ImagePack.swift */,
+				4B59FFDB256A83A000C0B9D7 /* GiftView.swift */,
 				4B59E83A2568BD1A00F5C2D6 /* XMas_CountdownApp.swift */,
 				4B59E83C2568BD1A00F5C2D6 /* CountdownView.swift */,
 				4B59FFD8256A28E000C0B9D7 /* AdventCalendarView.swift */,
@@ -152,9 +155,10 @@
 			files = (
 				4B59FFCE256A19E700C0B9D7 /* SettingsView.swift in Sources */,
 				4B59FFD9256A28E000C0B9D7 /* AdventCalendarView.swift in Sources */,
+				4B930B912571F48400215DF6 /* ImagePack.swift in Sources */,
 				4B59E83D2568BD1A00F5C2D6 /* CountdownView.swift in Sources */,
 				4B59FFD1256A1B8300C0B9D7 /* ContentView.swift in Sources */,
-				4B59FFDC256A83A000C0B9D7 /* PresentView.swift in Sources */,
+				4B59FFDC256A83A000C0B9D7 /* GiftView.swift in Sources */,
 				4B59E83B2568BD1A00F5C2D6 /* XMas_CountdownApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
