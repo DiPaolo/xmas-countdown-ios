@@ -67,8 +67,8 @@ public class PersistentStore {
         do {
             let fetchedGifts = try store.viewContext.fetch(giftsFetch) as! [GiftModel]
             print("==> \(fetchedGifts.count)")
-            for empl in fetchedGifts {
-                print("  \(empl.imageName!)")
+            for gift in fetchedGifts {
+                print("  \(gift.imageName!)")
             }
             
             return fetchedGifts.count > 0;
@@ -79,10 +79,10 @@ public class PersistentStore {
     
     private static func initializeContainer(_ store: NSPersistentContainer) {
         for i in 1...24 {
-            let language = GiftModel(context: store.viewContext)
-            language.imageName = "The Star Wars/\(i)"
-            language.day = Int32(i)
-            language.isOpened = false
+            let gift = GiftModel(context: store.viewContext)
+            gift.imageName = "The Star Wars/\(i)"
+            gift.day = Int32(i)
+            gift.isOpened = false
         }
     }
 }

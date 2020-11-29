@@ -17,13 +17,13 @@ struct DebugView: View {
         ]
     )
     
-    var languages: FetchedResults<GiftModel>
+    var gifts: FetchedResults<GiftModel>
     
     var body: some View {
         VStack {
-            List(languages, id: \.self) { language in
+            List(gifts, id: \.self) { gift in
                 HStack {
-                    Text("day=\(language.day), imageName=\(language.imageName ?? "-")")
+                    Text("day=\(gift.day), imageName=\(gift.imageName ?? "-")")
                 }
             }
         }
