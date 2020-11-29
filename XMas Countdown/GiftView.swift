@@ -21,16 +21,16 @@ struct GiftView: View {
         ZStack {
             Image(systemName: "\(gift.day).circle")
                 .resizable()
-                .opacity(gift.isOpened ? 1.0 : 0.0)
+                .opacity(gift.isOpened ? 0.0 : 1.0)
                 .onTapGesture {
                     gift.isOpened = !gift.isOpened
                     PersistentStore.saveContext()
                 }
 
-            image.resizable()
+            image
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .opacity(gift.isOpened ? 0.0 : 1.0)
+                .opacity(gift.isOpened ? 1.0 : 0.0)
                 .onTapGesture {
                     gift.isOpened = !gift.isOpened
                     PersistentStore.saveContext()
