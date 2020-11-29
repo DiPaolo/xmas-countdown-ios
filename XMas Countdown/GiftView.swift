@@ -24,6 +24,7 @@ struct GiftView: View {
                 .opacity(gift.isOpened ? 1.0 : 0.0)
                 .onTapGesture {
                     gift.isOpened = !gift.isOpened
+                    PersistentStore.saveContext()
                 }
 
             image.resizable()
@@ -32,6 +33,7 @@ struct GiftView: View {
                 .opacity(gift.isOpened ? 0.0 : 1.0)
                 .onTapGesture {
                     gift.isOpened = !gift.isOpened
+                    PersistentStore.saveContext()
                 }
         }
     }
