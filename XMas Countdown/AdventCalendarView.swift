@@ -37,7 +37,7 @@ struct AdventCalendarView: View {
     @FetchRequest(
         entity: GiftModel.entity(),
         sortDescriptors: [
-            NSSortDescriptor(keyPath: \GiftModel.imageName, ascending: true)
+            NSSortDescriptor(keyPath: \GiftModel.objectID, ascending: true)
         ]
     )
     

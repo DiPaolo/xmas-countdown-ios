@@ -47,7 +47,7 @@ public class PersistentStore {
             let fetchedGifts = try store.viewContext.fetch(giftsFetch) as! [GiftModel]
             print("==> \(fetchedGifts.count)")
             for gift in fetchedGifts {
-                print("  \(gift.imageName!)")
+                print("day = \(gift.day), image = \(gift.imageName!)")
             }
             
             return fetchedGifts.count > 0;
