@@ -51,18 +51,9 @@ struct AdventCalendarView: View {
     
     var body: some View {
         GridStack(rows: self.rows, columns: self.columns) { row, col in
-//            let day = gifts[row * self.columns + col].day
-//            GiftView(gift: Gift(day: day, image: getImage(pack: "The Star Wars", index: imageIndexes[day - 1]), isOpened: false))
+            let idx = row * self.columns + col
+            GiftView(gift: giftModel[idx])
         }
-    }
-    
-    init() {
-        print("WTF")
-        for gift in giftModel {
-            print("--")
-            print("\(gift.imageName!)")
-        }
-//        print("GiftModel has \(giftModel2.size()) elements")
     }
     
     private mutating func initGifts() {

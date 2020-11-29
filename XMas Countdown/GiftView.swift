@@ -8,7 +8,14 @@
 import SwiftUI
 
 struct GiftView: View {
-    @ObservedObject var gift: Gift
+    @ObservedObject var gift: GiftModel
+    
+    var image: Image
+    
+    init(gift: GiftModel) {
+        self.gift = gift
+        image = Image(gift.imageName!)
+    }
     
     var body: some View {
         ZStack {
@@ -19,7 +26,7 @@ struct GiftView: View {
                     gift.isOpened = !gift.isOpened
                 }
 
-            gift.image.resizable()
+            image.resizable()
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .opacity(gift.isOpened ? 0.0 : 1.0)
@@ -32,6 +39,6 @@ struct GiftView: View {
 
 struct PresentView_Previews: PreviewProvider {
     static var previews: some View {
-        GiftView(gift: Gift(day: 13, image: getImage(pack: "The Star Wars", index: 0), isOpened: true))
+        GiftView(gift: GiftModel())
     }
 }
