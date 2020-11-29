@@ -13,10 +13,6 @@ public class PersistentStore {
         return persistentContainer.viewContext
     }
 
-    private init() {
-        
-    }
-
     public static var persistentContainer: NSPersistentContainer = {
         let store = NSPersistentContainer(name: "Model")
 
@@ -28,23 +24,6 @@ public class PersistentStore {
         
         store.viewContext.automaticallyMergesChangesFromParent = true
         store.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-
-        print("Checking if the persistance container initialized...")
-        if isContainerInitialized(store) {
-            print("   OK, it's initialized")
-        } else {
-            print("   Not initialized.")
-            
-            print("Initializing...")
-            initializeContainer(store)
-            
-            print("Checking if the persistance container initialized...")
-            if isContainerInitialized(store) {
-                print("   OK, it's initialized")
-            } else {
-                print("   Not initialized.")
-            }
-        }
         
         return store
     }()
@@ -61,7 +40,7 @@ public class PersistentStore {
         }
     }
     
-    private static func isContainerInitialized(_ store: NSPersistentContainer) -> Bool {
+    public static func isContainerInitialized(_ store: NSPersistentContainer) -> Bool {
         let giftsFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "GiftModel")
 
         do {
@@ -73,16 +52,31 @@ public class PersistentStore {
             
             return fetchedGifts.count > 0;
         } catch {
-            fatalError("Failed to fetch employees: \(error)")
+            fatalError("Failed to fetch gifts: \(error)")
         }
     }
     
-    private static func initializeContainer(_ store: NSPersistentContainer) {
+    public static func initializeContainer(_ store: NSPersistentContainer) {
+        let days = initShuffledArray(24)
+        let imageIndexes = initShuffledArray(24)
+        
         for i in 1...24 {
             let gift = GiftModel(context: store.viewContext)
-            gift.imageName = "The Star Wars/\(i)"
-            gift.day = Int32(i)
+            gift.imageName = "The Star Wars/\(imageIndexes[i - 1])"
+            gift.day = Int32(days[i - 1])
             gift.isOpened = false
+            
+            print("day = \(gift.day), image = \(gift.imageName!)")
         }
     }
+}
+
+fileprivate func initShuffledArray(_ size: Int) -> Array<Int> {
+    var array = Array(repeating: 0, count: size)
+    for i in 0..<size {
+        array[i] = i + 1
+    }
+    
+    array.shuffle()
+    return array
 }
