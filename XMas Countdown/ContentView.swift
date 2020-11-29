@@ -20,7 +20,7 @@ struct ContentView: View {
     var languages: FetchedResults<GiftModel>
 
     var body: some View {
-
+#if DEBUG
         TabView {
             CountdownView()
                 .tabItem {
@@ -40,6 +40,9 @@ struct ContentView: View {
                     Text("Debug")
                 }
         }
+#else
+        CountdownView()
+#endif
     }
 }
 
