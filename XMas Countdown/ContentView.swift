@@ -8,7 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) private var managedObjectContext
+    
+    @FetchRequest(
+        entity: GiftModel.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \GiftModel.imageName, ascending: true)
+        ]
+    )
+    
+    var languages: FetchedResults<GiftModel>
+
     var body: some View {
+
         TabView {
             CountdownView()
                 .tabItem {
@@ -22,10 +34,10 @@ struct ContentView: View {
                     Text("Calendar")
                 }
 
-            SettingsView()
+            DebugView()
                 .tabItem {
                     Image(systemName: "gearshape.2")
-                    Text("Settings")
+                    Text("Debug")
                 }
         }
     }

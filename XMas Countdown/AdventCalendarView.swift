@@ -32,39 +32,76 @@ struct GridStack<Content: View>: View {
 }
 
 struct AdventCalendarView: View {
+    @Environment(\.managedObjectContext) private var managedObjectContext
+    
+    @FetchRequest(
+        entity: GiftModel.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \GiftModel.imageName, ascending: true)
+        ]
+    )
+    
+    var giftModel: FetchedResults<GiftModel>
+    
     private let rows = 6
     private let columns = 4
     
-    private var dates = [Int]()
+    private var gifts = [Gift]()
     private var imageIndexes = initShuffledArray(size: 24)
     
     var body: some View {
         GridStack(rows: self.rows, columns: self.columns) { row, col in
-            let day = dates[row * self.columns + col]
-            GiftView(day: day, giftImage: getImage(pack: "The Star Wars", index: imageIndexes[day - 1]), isOpened: false)
+//            let day = gifts[row * self.columns + col].day
+//            GiftView(gift: Gift(day: day, image: getImage(pack: "The Star Wars", index: imageIndexes[day - 1]), isOpened: false))
         }
     }
     
     init() {
-        initDates()
-        initImageIndexes()
+        print("WTF")
+        for gift in giftModel {
+            print("--")
+            print("\(gift.imageName!)")
+        }
+//        print("GiftModel has \(giftModel2.size()) elements")
     }
     
-    private mutating func initDates() {
-        print("Initializing dates...")
-        
-        if UserDefaults.standard.object(forKey: "DateList") == nil {
-            // initialize the days from 1 to 24 in random order
+    private mutating func initGifts() {
+        print("Initializing gifts...")
+
+        if UserDefaults.standard.object(forKey: "GiftList") == nil {
+            print("Initializing gifts...")
             
-            let days = initShuffledArray(size: 24)
-            print("Initialized 'DateList' with the values:")
-            print(days)
+            let daysInAdvent = 24
             
-            UserDefaults.standard.set(days, forKey: "DateList")
+            let days = initShuffledArray(size: daysInAdvent)
+            let imageIndexes = initShuffledArray(size: daysInAdvent)
+
+            var gifts = Array<GiftDto>(repeating: GiftDto(day: 0, imageName: "", isOpened: false), count: daysInAdvent)
+            for i in 0..<daysInAdvent {
+                gifts[i].day = days[i]
+                gifts[i].imageName = "The Star Wars/\(imageIndexes[i])"
+                gifts[i].isOpened = false
+            }
+            
+            for i in 0..<daysInAdvent {
+                print("day \(gifts[i].day) - \(gifts[i].imageName)")
+            }
         }
         
-        dates = UserDefaults.standard.array(forKey: "DateList") as? [Int] ?? [Int]()
-        print(dates)
+        if let giftList = UserDefaults.standard.data(forKey: "GiftList") {
+            do {
+                gifts.removeAll()
+                let decoder = JSONDecoder()
+                let giftDtos = try decoder.decode([GiftDto].self, from: giftList)
+                for giftDto in giftDtos {
+                    gifts.append(Gift(day: giftDto.day, image: Image(giftDto.imageName), isOpened: giftDto.isOpened))
+                }
+            } catch {
+                print("Unable to read gift list. Error: (\(error))")
+            }
+        }
+        
+        // add an extra free space after initialization's log
         print()
     }
     

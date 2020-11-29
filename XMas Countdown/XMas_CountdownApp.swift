@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct XMas_CountdownApp: App {
+    let context = PersistentStore.persistentContainer.viewContext
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.managedObjectContext, context)
         }
     }
 }

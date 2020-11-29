@@ -8,32 +8,23 @@
 import SwiftUI
 
 struct GiftView: View {
-    var day: Int // 1..24
-    var giftImage: Image
-
-    @State private var isOpened = true
-    
-    init(day: Int, giftImage: Image, isOpened: Bool) {
-        self.day = day
-        self.giftImage = giftImage
-        self.isOpened = isOpened
-    }
+    @ObservedObject var gift: Gift
     
     var body: some View {
         ZStack {
-            Image(systemName: "rectangle")
+            Image(systemName: "\(gift.day).circle")
                 .resizable()
-                .opacity(isOpened ? 1.0 : 0.0)
+                .opacity(gift.isOpened ? 1.0 : 0.0)
                 .onTapGesture {
-                    isOpened = !isOpened
+                    gift.isOpened = !gift.isOpened
                 }
 
-            giftImage.resizable()
+            gift.image.resizable()
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .opacity(isOpened ? 0.0 : 1.0)
+                .opacity(gift.isOpened ? 0.0 : 1.0)
                 .onTapGesture {
-                    isOpened = !isOpened
+                    gift.isOpened = !gift.isOpened
                 }
         }
     }
@@ -41,6 +32,6 @@ struct GiftView: View {
 
 struct PresentView_Previews: PreviewProvider {
     static var previews: some View {
-        GiftView(day: 13, giftImage: getImage(pack: "The Star Wars", index: 0), isOpened: true)
+        GiftView(gift: Gift(day: 13, image: getImage(pack: "The Star Wars", index: 0), isOpened: true))
     }
 }
