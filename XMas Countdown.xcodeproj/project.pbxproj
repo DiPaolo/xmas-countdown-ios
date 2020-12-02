@@ -17,7 +17,6 @@
 		4B59FFDC256A83A000C0B9D7 /* GiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B59FFDB256A83A000C0B9D7 /* GiftView.swift */; };
 		4B930BA12572C4C700215DF6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B930B9F2572C4C600215DF6 /* Model.xcdatamodeld */; };
 		4B930BA52573625200215DF6 /* PersistentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B930BA42573625200215DF6 /* PersistentStore.swift */; };
-		4BFB672B2574C1D20098A7EB /* GiftDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB672A2574C1D20098A7EB /* GiftDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +32,6 @@
 		4B59FFDB256A83A000C0B9D7 /* GiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftView.swift; sourceTree = "<group>"; };
 		4B930BA02572C4C600215DF6 /* GiftListModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GiftListModel.xcdatamodel; sourceTree = "<group>"; };
 		4B930BA42573625200215DF6 /* PersistentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentStore.swift; sourceTree = "<group>"; };
-		4BFB672A2574C1D20098A7EB /* GiftDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +65,6 @@
 			isa = PBXGroup;
 			children = (
 				4B59FFDB256A83A000C0B9D7 /* GiftView.swift */,
-				4BFB672A2574C1D20098A7EB /* GiftDetails.swift */,
 				4B59E83A2568BD1A00F5C2D6 /* XMas_CountdownApp.swift */,
 				4B930BA42573625200215DF6 /* PersistentStore.swift */,
 				4B930B9F2572C4C600215DF6 /* Model.xcdatamodeld */,
@@ -161,7 +158,6 @@
 			files = (
 				4B59FFCE256A19E700C0B9D7 /* DebugView.swift in Sources */,
 				4B59FFD9256A28E000C0B9D7 /* AdventCalendarView.swift in Sources */,
-				4BFB672B2574C1D20098A7EB /* GiftDetails.swift in Sources */,
 				4B59E83D2568BD1A00F5C2D6 /* CountdownView.swift in Sources */,
 				4B59FFD1256A1B8300C0B9D7 /* ContentView.swift in Sources */,
 				4B59FFDC256A83A000C0B9D7 /* GiftView.swift in Sources */,
