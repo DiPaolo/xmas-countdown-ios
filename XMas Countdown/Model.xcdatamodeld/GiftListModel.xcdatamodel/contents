@@ -4,8 +4,9 @@
         <attribute name="day" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="imageName" optional="YES" attributeType="String"/>
         <attribute name="isOpened" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="GiftModel" positionX="-63" positionY="-18" width="157.8881225585938" height="88"/>
+        <element name="GiftModel" positionX="-63" positionY="-18" width="157.8881225585938" height="89"/>
     </elements>
 </model>
