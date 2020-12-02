@@ -49,14 +49,18 @@ struct AdventCalendarView: View {
     var body: some View {
         GridStack(rows: self.rows, columns: self.columns) { row, col in
             let idx = row * self.columns + col
-            NavigationLink(destination: GiftDetails(gift: giftModel[idx])) {
-//                Image(systemName: "\(giftModel[idx].day).circle")
-//                    .resizable()
-                GiftView(gift: giftModel[idx])
+            NavigationLink(destination: GiftView(gift: giftModel[idx], giftIconSize: 128)) {
+                ZStack {
+                    Image(systemName: "\(giftModel[idx].day).circle")
+                        .resizable()
+                        .opacity(giftModel[idx].isOpened ? 0.0 : 1.0)
+                
+                    GiftView(gift: giftModel[idx], giftIconSize: 32)
+                        .opacity(giftModel[idx].isOpened ? 1.0 : 0.0)
+                }
             }
         }
         .navigationBarTitle(Text("Advent Calendar"))
-//        .navigationBarHidden(true)
     }
 }
 

@@ -18,13 +18,13 @@ struct GiftDetails: View {
 
     var body: some View {
         ZStack {
-            Image(systemName: "\(gift.day).circle")
-                .resizable()
-                .opacity(gift.isOpened ? 0.0 : 1.0)
-                .onTapGesture {
-                    gift.isOpened = !gift.isOpened
-                    PersistentStore.saveContext()
-                }
+//            Image(systemName: "\(gift.day).circle")
+//                .resizable()
+//                .opacity(gift.isOpened ? 0.0 : 1.0)
+//                .onTapGesture {
+//                    gift.isOpened = !gift.isOpened
+//                    PersistentStore.saveContext()
+//                }
 
             image
                 .resizable()
@@ -36,8 +36,8 @@ struct GiftDetails: View {
     }
 }
 
-struct GiftDetails_Previews: PreviewProvider {
-    static var previews: some View {
-        GiftDetails(gift: GiftModel())
-    }
-}
+//struct GiftDetails_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GiftDetails(gift: GiftModel(needToOpen: true))
+//    }
+//}
