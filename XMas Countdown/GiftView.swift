@@ -8,11 +8,24 @@
 import CoreData
 import SwiftUI
 
+struct Shake: GeometryEffect {
+    var amount: CGFloat = 10
+    var shakesPerUnit = 3
+    var animatableData: CGFloat
+
+    func effectValue(size: CGSize) -> ProjectionTransform {
+        ProjectionTransform(CGAffineTransform(translationX:
+            amount * sin(animatableData * .pi * CGFloat(shakesPerUnit)),
+            y: 0))
+    }
+}
+
 struct GiftView: View {
     @ObservedObject var gift: GiftModel
     
     var image: Image
     var giftIconSize: CGFloat
+    @State var animation: Bool = false
     
     init(gift: GiftModel, giftIconSize: Int) {
         self.gift = gift
@@ -26,14 +39,22 @@ struct GiftView: View {
             VStack {
                 Text("Open Me!")
 
-                Image(systemName: "gift")
-                    .resizable()
-                    .frame(width: giftIconSize, height: giftIconSize)
-                    .foregroundColor(.red)
-                    .onTapGesture {
-                        gift.isOpened = !gift.isOpened
-                        PersistentStore.saveContext()
+                ZStack {
+                    if animation {
+                    Image(systemName: "gift")
+                        .resizable()
+                        .frame(width: giftIconSize, height: giftIconSize)
+                        .foregroundColor(.red)
+                        .onTapGesture {
+                            gift.isOpened = !gift.isOpened
+                            PersistentStore.saveContext()
+                        }
+                        .transition(AnyTransition.opacity.animation(.easeInOut(duration: 5.0)))
                     }
+                }
+                .onAppear {
+                    self.animation.toggle()
+                }
             }
             .opacity(gift.isOpened ? 0.0 : 1.0)
 
