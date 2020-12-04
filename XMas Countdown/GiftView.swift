@@ -22,19 +22,20 @@ struct Shake: GeometryEffect {
 
 struct GiftView: View {
     @ObservedObject var gift: GiftModel
-    
-    var image: Image
-    var giftIconSize: CGFloat
     @State var animation: Bool = false
+
+    let daysLeft = Calendar.current.dateComponents([.day], from: Date(), to: dayX).day!
+
+    var image: Image
+    var isFullScreen: Bool = false
     
-    init(gift: GiftModel, giftIconSize: Int) {
+    init(gift: GiftModel, isFullScreen: Bool) {
         self.gift = gift
         image = Image(gift.imageName!)
-        self.giftIconSize = CGFloat(giftIconSize)
+        self.isFullScreen = isFullScreen
     }
     
     var body: some View {
-
         ZStack {
             VStack {
                 Text("Open Me!")
@@ -43,25 +44,27 @@ struct GiftView: View {
                     if animation {
                     Image(systemName: "gift")
                         .resizable()
-                        .frame(width: giftIconSize, height: giftIconSize)
                         .foregroundColor(.red)
                         .onTapGesture {
                             gift.isOpened = !gift.isOpened
                             PersistentStore.saveContext()
                         }
-                        .transition(AnyTransition.opacity.animation(.easeInOut(duration: 5.0)))
+                        .transition(AnyTransition.scale.animation(.easeInOut(duration: 5.0)))
                     }
                 }
                 .onAppear {
                     self.animation.toggle()
                 }
             }
-            .opacity(gift.isOpened ? 0.0 : 1.0)
+            .opacity(isFullScreen && !gift.isOpened && gift.day < 25 - daysLeft ? 1.0 : 0.0)
 
             image
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .opacity(gift.isOpened ? 1.0 : 0.0)
+                .opacity(!gift.isOpened ? 0.0 : 1.0)
+            
+            Text("It's too early to open a gift box ;(")
+                .opacity(isFullScreen && !gift.isOpened && gift.day >= 25 - daysLeft ? 1.0 : 0.0)
         }
     }
 }
@@ -72,7 +75,7 @@ struct PresentView_Previews: PreviewProvider {
 
         do {
             let fetchedGifts = try PersistentStore.context.fetch(giftsFetch) as! [GiftModel]
-            return GiftView(gift: fetchedGifts[1], giftIconSize: 128)
+            return GiftView(gift: fetchedGifts[1], isFullScreen: true)
         } catch {
             fatalError("Failed to fetch gifts: \(error)")
         }

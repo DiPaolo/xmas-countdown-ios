@@ -46,16 +46,24 @@ struct AdventCalendarView: View {
     private let rows = 6
     private let columns = 4
     
+    let daysLeft = Calendar.current.dateComponents([.day], from: Date(), to: dayX).day!
+        
     var body: some View {
         GridStack(rows: self.rows, columns: self.columns) { row, col in
             let idx = row * self.columns + col
-            NavigationLink(destination: GiftView(gift: giftModel[idx], giftIconSize: 128)) {
+            NavigationLink(destination: GiftView(gift: giftModel[idx], isFullScreen: true)) {
                 ZStack {
                     Image(systemName: "\(giftModel[idx].day).circle")
                         .resizable()
+                        .accentColor(.gray)
                         .opacity(giftModel[idx].isOpened ? 0.0 : 1.0)
-                
-                    GiftView(gift: giftModel[idx], giftIconSize: 32)
+
+                    Image(systemName: "gift")
+                        .accentColor(.red)
+                        .offset(x: 16, y: 16)
+                        .opacity(!giftModel[idx].isOpened && giftModel[idx].day < 25 - daysLeft ? 1.0 : 0.0)
+                    
+                    GiftView(gift: giftModel[idx], isFullScreen: false)
                         .opacity(giftModel[idx].isOpened ? 1.0 : 0.0)
                 }
             }
