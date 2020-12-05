@@ -43,7 +43,8 @@ struct GiftView: View {
                 .opacity(isFullScreen && !gift.isOpened && gift.day < 25 - daysLeft ? 1.0 : 0.0)
 
             // opened gift
-            OpenedGiftView(gift: self.gift)
+            OpenedGiftView(gift: self.gift, isFullScreen: self.isFullScreen)
+                .opacity(gift.isOpened ? 1.0 : 0.0)
         }
     }
 }
@@ -79,20 +80,41 @@ struct ReadyToOpenGiftView: View {
 struct OpenedGiftView : View {
     @ObservedObject var gift: GiftModel
 
-    @State var animation: Bool = false
+    @State var animation = false
+    @State var showingDetail = false
     
     var image: Image
+    var isFullScreen: Bool = false
     
-    init(gift: GiftModel) {
+    init(gift: GiftModel, isFullScreen: Bool) {
         self.gift = gift
         self.image = Image(gift.imageName!)
+        self.isFullScreen = isFullScreen
     }
 
     var body: some View {
-        image
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .opacity(!gift.isOpened ? 0.0 : 1.0)
+        ZStack {
+            VStack {
+                Button(action: {
+                    self.showingDetail.toggle()
+                }) {
+                    VStack {
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                        Text("\(gift.name ?? "Info")")
+                    }
+                }.sheet(isPresented: $showingDetail) {
+                    Text("\(gift.information ?? "No additional information")")
+                }
+            }
+            .opacity(isFullScreen ? 1.0 : 0.0)
+            
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .opacity(isFullScreen ? 0.0 : 1.0)
+        }
     }
 }
 

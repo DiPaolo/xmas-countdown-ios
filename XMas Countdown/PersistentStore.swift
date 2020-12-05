@@ -59,14 +59,21 @@ public class PersistentStore {
     public static func initializeContainer(_ store: NSPersistentContainer) {
         let days = initShuffledArray(24)
         let imageIndexes = initShuffledArray(24)
-        
+
+        let giftData: [GiftDataEntity] = load("description.json")
+
         for i in 1...24 {
             let gift = GiftModel(context: store.viewContext)
             gift.imageName = "The Star Wars/\(imageIndexes[i - 1])"
             gift.day = Int32(days[i - 1])
             gift.isOpened = false
             
-            print("day = \(gift.day), image = \(gift.imageName!)")
+            if let giftData = giftData.first(where: { "The Star Wars/\($0.imageName)" == gift.imageName! }) {
+                gift.name = giftData.name
+                gift.information = giftData.description
+            }
+
+            print("day = \(gift.day), image = \(gift.imageName!), name = \(gift.name ?? "n/a"), info = \(gift.information ?? "???")")
         }
     }
 }
