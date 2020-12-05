@@ -22,49 +22,98 @@ struct Shake: GeometryEffect {
 
 struct GiftView: View {
     @ObservedObject var gift: GiftModel
-    @State var animation: Bool = false
 
     let daysLeft = Calendar.current.dateComponents([.day], from: Date(), to: dayX).day!
 
-    var image: Image
     var isFullScreen: Bool = false
     
     init(gift: GiftModel, isFullScreen: Bool) {
         self.gift = gift
-        image = Image(gift.imageName!)
         self.isFullScreen = isFullScreen
     }
     
     var body: some View {
         ZStack {
-            VStack {
-                Text("Open Me!")
+            // can't be opened (too early)
+            Text("It's too early to open a gift box ;(")
+                .opacity(isFullScreen && !gift.isOpened && gift.day >= 25 - daysLeft ? 1.0 : 0.0)
 
-                ZStack {
-                    if animation {
-                    Image(systemName: "gift")
-                        .resizable()
-                        .foregroundColor(.red)
-                        .onTapGesture {
-                            gift.isOpened = !gift.isOpened
-                            PersistentStore.saveContext()
-                        }
-                        .transition(AnyTransition.scale.animation(.easeInOut(duration: 5.0)))
+            // allow the user to open
+            ReadyToOpenGiftView(gift: self.gift)
+                .opacity(isFullScreen && !gift.isOpened && gift.day < 25 - daysLeft ? 1.0 : 0.0)
+
+            // opened gift
+            OpenedGiftView(gift: self.gift, isFullScreen: self.isFullScreen)
+                .opacity(gift.isOpened ? 1.0 : 0.0)
+        }
+    }
+}
+
+struct ReadyToOpenGiftView: View {
+    @ObservedObject var gift: GiftModel
+
+    @State var animation: Bool = false
+    
+    var body: some View {
+        VStack {
+            Text("Open Me!")
+
+            ZStack {
+                if animation {
+                Image(systemName: "gift")
+                    .resizable()
+                    .foregroundColor(.red)
+                    .onTapGesture {
+                        gift.isOpened = !gift.isOpened
+                        PersistentStore.saveContext()
                     }
-                }
-                .onAppear {
-                    self.animation.toggle()
+                    .transition(AnyTransition.scale.animation(.easeInOut(duration: 5.0)))
                 }
             }
-            .opacity(isFullScreen && !gift.isOpened && gift.day < 25 - daysLeft ? 1.0 : 0.0)
+            .onAppear {
+                self.animation.toggle()
+            }
+        }
+    }
+}
 
+struct OpenedGiftView : View {
+    @ObservedObject var gift: GiftModel
+
+    @State var animation = false
+    @State var showingDetail = false
+    
+    var image: Image
+    var isFullScreen: Bool = false
+    
+    init(gift: GiftModel, isFullScreen: Bool) {
+        self.gift = gift
+        self.image = Image(gift.imageName!)
+        self.isFullScreen = isFullScreen
+    }
+
+    var body: some View {
+        ZStack {
+            VStack {
+                Button(action: {
+                    self.showingDetail.toggle()
+                }) {
+                    VStack {
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                        Text("\(gift.name ?? "Info")")
+                    }
+                }.sheet(isPresented: $showingDetail) {
+                    Text("\(gift.information ?? "No additional information")")
+                }
+            }
+            .opacity(isFullScreen ? 1.0 : 0.0)
+            
             image
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .opacity(!gift.isOpened ? 0.0 : 1.0)
-            
-            Text("It's too early to open a gift box ;(")
-                .opacity(isFullScreen && !gift.isOpened && gift.day >= 25 - daysLeft ? 1.0 : 0.0)
+                .opacity(isFullScreen ? 0.0 : 1.0)
         }
     }
 }
