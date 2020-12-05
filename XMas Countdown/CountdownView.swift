@@ -16,16 +16,12 @@ struct CountdownView: View {
     let daysLeft = Calendar.current.dateComponents([.day], from: Date(), to: dayX).day!
 
     let textFont = Font.custom(
-//        "Noteworthy",
-//        "Papyrus",
         "Party LET",
         size: 60) // 70
 
     let circleRadius: CGFloat = 200.0 // 250
     let circleFontSize: CGFloat = 170 // 200
     
-//    @State private var hidden = false
-//    @State private var hasOffset = false
     @State private var isRedBackground: Bool = true
     @State private var toggleStatus = false
 
@@ -45,16 +41,10 @@ struct CountdownView: View {
                                         .fill(isRedBackground ? Color.red : Color.white)
                                         .frame(width: circleRadius, height: circleRadius)
                         )
-//                        .opacity(toggleStatus ? 0.0 : 1.0)
-//                        .onTapGesture {
-//                            self.toggleStatus = !self.toggleStatus
-//                            print("Show details for Enterprise")
-//                        }
                 }
 
                 Text("DAYS")
                     .font(textFont)
-    //                .baselineOffset(-24)
                 Text("before Christmas")
                     .font(textFont)
             }
