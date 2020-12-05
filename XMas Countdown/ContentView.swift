@@ -20,29 +20,30 @@ struct ContentView: View {
     var languages: FetchedResults<GiftModel>
 
     var body: some View {
-#if DEBUG
-        TabView {
-            CountdownView()
-                .tabItem {
-                    Image(systemName: "timer.square")
-                    Text("Countdown")
-                }
-
-            AdventCalendarView()
-                .tabItem {
-                    Image(systemName: "calendar")
-                    Text("Calendar")
-                }
-
-            DebugView()
-                .tabItem {
-                    Image(systemName: "gearshape.2")
-                    Text("Debug")
-                }
-        }
-#else
+//#if DEBUG
+//        TabView {
+//            CountdownView()
+//                .tabItem {
+//                    Image(systemName: "timer.square")
+//                    Text("Countdown")
+//                }
+//
+//            AdventCalendarView()
+//                .tabItem {
+//                    Image(systemName: "calendar")
+//                    Text("Calendar")
+//                }
+//
+//            DebugView()
+//                .tabItem {
+//                    Image(systemName: "gearshape.2")
+//                    Text("Debug")
+//                }
+//        }
+//#else
         CountdownView()
-#endif
+//        playground()
+//#endif
     }
 }
 
