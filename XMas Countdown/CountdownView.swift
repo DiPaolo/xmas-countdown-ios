@@ -7,14 +7,7 @@
 
 import SwiftUI
 
-let dayX: Date = {
-    var date = DateComponents(year: 2020, month: 12, day: 25)
-    return Calendar.current.date(from: date)!
-}()
-
 struct CountdownView: View {
-    let daysLeft = Calendar.current.dateComponents([.day], from: Date(), to: dayX).day!
-
     let textFont = Font.custom(
         "Party LET",
         size: 60) // 70
@@ -32,7 +25,7 @@ struct CountdownView: View {
                     .font(textFont)
 
                 NavigationLink(destination: AdventCalendarView()) {
-                    Text("\(daysLeft)")
+                    Text("\(DateHelper.daysLeft())")
                         .font(.custom("Academy Engraved LET", size: circleFontSize))
                         .baselineOffset(-45)
                         .frame(width: circleRadius, height: circleRadius)

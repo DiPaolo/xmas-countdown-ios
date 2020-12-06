@@ -11,8 +11,6 @@ import SwiftUI
 struct GiftView: View {
     @ObservedObject var gift: GiftModel
 
-    let daysLeft = Calendar.current.dateComponents([.day], from: Date(), to: dayX).day!
-
     var isFullScreen: Bool = false
     
     init(gift: GiftModel, isFullScreen: Bool) {
@@ -24,11 +22,11 @@ struct GiftView: View {
         ZStack {
             // can't be opened (too early)
             Text("It's too early to open a gift box ;(")
-                .opacity(isFullScreen && !gift.isOpened && gift.day >= 25 - daysLeft ? 1.0 : 0.0)
+                .opacity(isFullScreen && !gift.isOpened && !DateHelper.isGiftReadyToBeOpened(gift.day) ? 1.0 : 0.0)
 
             // allow the user to open
             ReadyToOpenGiftView(gift: self.gift)
-                .opacity(isFullScreen && !gift.isOpened && gift.day < 25 - daysLeft ? 1.0 : 0.0)
+                .opacity(isFullScreen && !gift.isOpened && DateHelper.isGiftReadyToBeOpened(gift.day) ? 1.0 : 0.0)
 
             // opened gift
             OpenedGiftView(gift: self.gift, isFullScreen: self.isFullScreen)
