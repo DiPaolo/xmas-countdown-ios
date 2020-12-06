@@ -40,20 +40,24 @@ public class PersistentStore {
         }
     }
     
-    public static func isContainerInitialized(_ store: NSPersistentContainer) -> Bool {
+    public static func gifts() -> [GiftModel] {
         let giftsFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "GiftModel")
 
         do {
-            let fetchedGifts = try store.viewContext.fetch(giftsFetch) as! [GiftModel]
+            let fetchedGifts = try persistentContainer.viewContext.fetch(giftsFetch) as! [GiftModel]
             print("==> \(fetchedGifts.count)")
             for gift in fetchedGifts {
                 print("day = \(gift.day), image = \(gift.imageName!)")
             }
             
-            return fetchedGifts.count > 0;
+            return fetchedGifts
         } catch {
             fatalError("Failed to fetch gifts: \(error)")
         }
+    }
+    
+    public static func isContainerInitialized(_ store: NSPersistentContainer) -> Bool {
+        return gifts().count > 0
     }
     
     public static func initializeContainer(_ store: NSPersistentContainer) {

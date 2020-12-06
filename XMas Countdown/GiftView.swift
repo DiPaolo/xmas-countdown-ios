@@ -52,6 +52,7 @@ struct ReadyToOpenGiftView: View {
                     .onTapGesture {
                         gift.isOpened = !gift.isOpened
                         PersistentStore.saveContext()
+                        UserNotificationHelper.updateBadgeCounter()
                     }
                     .transition(AnyTransition.scale.animation(.easeInOut(duration: 5.0)))
                 }

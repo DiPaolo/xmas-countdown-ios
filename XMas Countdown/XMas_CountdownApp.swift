@@ -35,6 +35,9 @@ struct XMas_CountdownApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, context)
+                .onAppear() {
+                    UserNotificationHelper.updateBadgeCounter()
+                }
         }
     }
 }
