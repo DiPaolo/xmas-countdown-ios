@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var managedObjectContext
-
-    @FetchRequest(
-        entity: GiftModel.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \GiftModel.imageName, ascending: true)
-        ]
-    )
-
-    var languages: FetchedResults<GiftModel>
+//    @Environment(\.managedObjectContext) private var managedObjectContext
+//
+//    @FetchRequest(
+//        entity: GiftModel.entity(),
+//        sortDescriptors: [
+//            NSSortDescriptor(keyPath: \GiftModel.imageName, ascending: true)
+//        ]
+//    )
+//
+//    var languages: FetchedResults<GiftModel>
 
     var body: some View {
 //#if DEBUG
@@ -41,8 +41,8 @@ struct ContentView: View {
 //                }
 //        }
 //#else
-        CountdownView()
-//        playground()
+//        CountdownView()
+        playground()
 //#endif
     }
 }

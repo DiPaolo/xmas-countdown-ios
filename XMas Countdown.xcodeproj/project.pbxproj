@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B1DB737257FEF87009DA539 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1DB736257FEF87009DA539 /* AppDelegate.swift */; };
+		4B1DB73A257FEF9D009DA539 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1DB739257FEF9D009DA539 /* SceneDelegate.swift */; };
 		4B59E83B2568BD1A00F5C2D6 /* XMas_CountdownApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B59E83A2568BD1A00F5C2D6 /* XMas_CountdownApp.swift */; };
 		4B59E83D2568BD1A00F5C2D6 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B59E83C2568BD1A00F5C2D6 /* CountdownView.swift */; };
 		4B59E83F2568BD1E00F5C2D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B59E83E2568BD1E00F5C2D6 /* Assets.xcassets */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B1DB736257FEF87009DA539 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4B1DB739257FEF9D009DA539 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4B59E8372568BD1A00F5C2D6 /* XMas Countdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XMas Countdown.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B59E83A2568BD1A00F5C2D6 /* XMas_CountdownApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMas_CountdownApp.swift; sourceTree = "<group>"; };
 		4B59E83C2568BD1A00F5C2D6 /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 				4BB526F1257C917200312B92 /* DateHelper.swift */,
 				4BF380B1257B71B000F77BBD /* playground.swift */,
 				4B59E83A2568BD1A00F5C2D6 /* XMas_CountdownApp.swift */,
+				4B1DB736257FEF87009DA539 /* AppDelegate.swift */,
+				4B1DB739257FEF9D009DA539 /* SceneDelegate.swift */,
 				4BB526EA257C8EA800312B92 /* UserNotificationManager.swift */,
 				4BB526F5257C9C8000312B92 /* UserNotificationHelper.swift */,
 				4B930BA42573625200215DF6 /* PersistentStore.swift */,
@@ -179,6 +185,8 @@
 				4B59FFCE256A19E700C0B9D7 /* DebugView.swift in Sources */,
 				4B59FFD9256A28E000C0B9D7 /* AdventCalendarView.swift in Sources */,
 				4BB526F2257C917200312B92 /* DateHelper.swift in Sources */,
+				4B1DB737257FEF87009DA539 /* AppDelegate.swift in Sources */,
+				4B1DB73A257FEF9D009DA539 /* SceneDelegate.swift in Sources */,
 				4BB526F6257C9C8000312B92 /* UserNotificationHelper.swift in Sources */,
 				4B59E83D2568BD1A00F5C2D6 /* CountdownView.swift in Sources */,
 				4B59FFD1256A1B8300C0B9D7 /* ContentView.swift in Sources */,
