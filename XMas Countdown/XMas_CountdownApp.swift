@@ -3,7 +3,7 @@
 //  XMas Countdown
 //
 //  Created by Pavel Ditenbir on 21.11.2020.
-//
+// Kat'ka was here
 
 import SwiftUI
 
