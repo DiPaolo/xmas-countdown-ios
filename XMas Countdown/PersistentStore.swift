@@ -66,6 +66,9 @@ public class PersistentStore {
 
         let giftData: [GiftDataEntity] = load("description.json")
 
+        print("here is giftData")
+        print(giftData)
+        
         for i in 1...24 {
             let gift = GiftModel(context: store.viewContext)
             gift.imageName = "The Star Wars/\(imageIndexes[i - 1])"

@@ -7,12 +7,38 @@
 
 import UIKit
 import CoreData
+import OSLog
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var window: UIWindow?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+//        let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "common")
+//        logger.log("XMas_CountdownApp::init()")
+//
+//        print("Checking if the persistance container initialized...")
+//        if PersistentStore.isContainerInitialized(PersistentStore.persistentContainer) {
+//            print("      OK, it's initialized")
+//        } else {
+//            print("      Not initialized.")
+//
+//            print("Initializing...")
+//            PersistentStore.initializeContainer(PersistentStore.persistentContainer)
+//            PersistentStore.saveContext()
+//
+//            print("   Checking if the persistance container initialized...")
+//            if PersistentStore.isContainerInitialized(PersistentStore.persistentContainer) {
+//                print("      OK, it's initialized")
+//            } else {
+//                print("      Not initialized.")
+//            }
+//        }
+        
         return true
     }
 
