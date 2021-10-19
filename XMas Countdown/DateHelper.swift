@@ -8,7 +8,7 @@
 import Foundation
 
 fileprivate let dayX: Date = {
-    var date = DateComponents(year: 2020, month: 12, day: 25)
+    var date = DateComponents(year: 2021, month: 12, day: 25)
     return Calendar.current.date(from: date)!
 }()
 

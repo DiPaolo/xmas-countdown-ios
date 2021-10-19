@@ -27,7 +27,7 @@ struct CountdownView: View {
                 NavigationLink(destination: AdventCalendarView()) {
                     Text("\(DateHelper.daysLeft())")
                         .font(.custom("Academy Engraved LET", size: circleFontSize))
-                        .baselineOffset(-45)
+                        .baselineOffset(-79)
                         .frame(width: circleRadius, height: circleRadius)
                         .foregroundColor(isRedBackground ? Color.white : Color.red)
                         .background(Circle()
